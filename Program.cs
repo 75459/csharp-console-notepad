@@ -17,7 +17,7 @@ namespace ConsoleNotepad
                 {
                     Console.WriteLine("==========================================================================================");
                     Console.WriteLine("Witaj \n\n1. stworz notatke\n2. usun notatke\n3. edytuj nazwe notatki\n4. edytuj tresc notatki\n5. Wyswietl notes");
-                    string inputStr = Console.ReadLine();
+                    string inputStr = Console.ReadLine() ?? "";
 
                     if (!int.TryParse(inputStr, out int inputInt))
                     {
@@ -30,7 +30,7 @@ namespace ConsoleNotepad
                     {
                         case 1:
                             Console.WriteLine("Podaj Nazwę notatki.");
-                            string name = Console.ReadLine();
+                            string name = Console.ReadLine() ?? "";
                             string noteText = NoteMode();
                             int noteId = notes.AddNote(name, noteText);
                             storage.Save(notes);
@@ -47,7 +47,7 @@ namespace ConsoleNotepad
                         case 3:
                             int id2 = AskAndCheckId("Podaj id notatki.", notes);
                             Console.WriteLine("Podaj nową nazwe notatki.");
-                            string newName = Console.ReadLine();
+                            string newName = Console.ReadLine() ?? "";
                             notes.EditNoteName(id2, newName);
                             storage.Save(notes);
                             Console.WriteLine($"Pomyslnie zmieniono nazwe notatce [{id2}] na [{newName}]");
@@ -88,7 +88,7 @@ namespace ConsoleNotepad
             while (true)
             {
                 Console.WriteLine(text);
-                string id = Console.ReadLine();
+                string id = Console.ReadLine() ?? "";
                 if (int.TryParse(id, out int intId))
                 {
                     if (notepad.DoesIdExist(intId))
@@ -114,7 +114,7 @@ namespace ConsoleNotepad
 
             while (true)
             {
-                string newLine = Console.ReadLine();
+                string newLine = Console.ReadLine() ?? "";
                 if (newLine == "end/")
                 {
                     if (noteCollected == "")

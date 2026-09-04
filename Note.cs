@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace ConsoleNotepad;
 internal class Note
 {
-    public string Name { get; set; }
-    public string Content { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Content { get; set; } = string.Empty;
 
     public Note() { }
     public Note(string name, string content)
